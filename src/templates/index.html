@@ -1,1 +1,32 @@
-<!-- Placeholder HTML File -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/login.css">
+    <link rel="icon"  href="SRR_Logo.png">
+    <meta charset="UTF-8">
+    <title>Same Rhythm Radar</title>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <b>Same Rhythm Radar</b>
+        </h1>
+    </div>
+
+    <form action="{% url 'login' %}" method="post"> <!-- Routes this form to the 'login' function in views.py -->
+    {% csrf_token %}
+    <div class="form-container">
+        <label><b>Username</b></label>
+        <input type="text" name="username" placeholder="Enter Username" required>
+
+        <label><b>Password</b></label>
+        <input type="password" name="password" placeholder="Enter Password" required>
+    </div>
+
+    <div class="form-submit-container">
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+</body>
+</html>

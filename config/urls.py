@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from src import views
+
+# Everytime a new views function is added, you must also create a new urlpattern below
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', views.index, name='index'),
+    path('login/', views.login, name='login'),
+    path('home/<str:username>/', views.home, name='home')
 ]
