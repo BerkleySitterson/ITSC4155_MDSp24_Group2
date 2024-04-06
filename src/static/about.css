@@ -1,0 +1,18 @@
+.header {
+    padding: 30px;
+    text-align: center;
+    background: #A0C3D2;
+    color: white;
+    font-size: 30px;
+}
+
+body {
+    background: #C7C8CC;
+}
+
+.about_us
+{
+    text-align: center;
+    background: white;
+    font-size: 20px;
+}
