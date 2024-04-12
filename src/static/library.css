@@ -8,29 +8,93 @@
 
 body {
     background: #C7C8CC;
+    font-family: 'Arial', sans-serif;
 }
 
-.tabs
-{
-    text-align: center;
-    width: 20%;
-    border: 5px solid black;
-    background: white;
-    font-size: 20px;
+/* Custom Navbar Styles */
+.navbar {
+    padding-top: 1rem; /* Increase padding to increase height */
+    padding-bottom: 1rem; /* Increase padding to increase height */
+}
+
+/* If you want a specific height instead of padding */
+.navbar {
+    height: 70px; /* Or any other height */
+}
+
+/* Ensure the brand and menu text are vertically centered */
+.navbar-brand, .navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.tabs {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style each tab item */
+.tabs li {
+    margin-bottom: 10px; /* Space between items */
+    background-color: #007bff; /* Bootstrap primary color for the background */
+    color: white; /* White text color for contrast */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners for the background */
+    cursor: pointer; /* Indicates the item is clickable */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Remove default link styling */
+.tabs li a {
+    color: inherit; /* Inherit text color from parent */
+    text-decoration: none; /* Removes underline from links */
+    display: block; /* Expand the clickable area to the whole tab */
+}
+
+/* Hover effect for tabs */
+.tabs li:hover {
+    background-color: #0056b3; /* Darken the background on hover */
 }
 
 .recent {
     text-align: center;
-    font-size: 20px;
+    font-size: 1.25rem;
+    margin-top: 30px;
 }
 
 .added {
-    text-align: center;
-    border: 5px solid black;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px; /* Soften the borders */
     background: white;
-    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
 button {
-    vertical-align: middle;
+    padding: 10px 20px; /* More padding for better touch targets */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    border: none;
+    background-color: #007bff; /* Bootstrap primary button color */
+    color: white;
+    font-size: 1rem;
+    margin-left: 10px; /* Add space between text and button */
+    cursor: pointer; /* Indicates an interactive element */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darken button on hover for interactivity */
+}
+
+/* Ensure buttons don't have a border when focused to maintain the design */
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tabs {
+        width: auto; /* Full width on smaller screens */
+    }
 }
