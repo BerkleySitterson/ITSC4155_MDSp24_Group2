@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="../static/about.css">
-
     <link rel="icon" href="SRR_Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,25 +44,26 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary"> <!-- Change bg-dark to bg-primary -->
         <div class="container">
-            <a class="navbar-brand" href="index.html">Same Rhythm Radar</a>
-            <!-- Hamburger Menu for smaller devices -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Text instead of logo -->
+            <span class="navbar-text text-white"><strong>Same Rhythm Radar</strong></span>
+            <!-- Hamburger button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- Navbar links -->
+            <!-- Dropdown menu -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <strong>Menu</strong>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Home.html">Home</a></li>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="z-index: 1000;">
+                            <li><a class="dropdown-item" href="home.html">Home</a></li>
+                            <li><a class="dropdown-item" href="account.html">Account</a></li>
                             <li><a class="dropdown-item" href="library.html">Library</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="toggleHistoryColumn()">History</a></li>
-                            <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target="#searchHistoryColumn">History</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Log Out</a></li>
                         </ul>
