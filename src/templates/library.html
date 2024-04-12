@@ -6,23 +6,53 @@
     <link rel="icon" href="SRR_Logo.png">
     <meta charset="UTF-8">
     <title>Same Rhythm Radar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 </head>
 
 <body>
-
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Same Rhythm Radar</a>
+            <!-- Hamburger Menu for smaller devices -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>Menu</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Home.html">Home</a></li>
+                            <li><a class="dropdown-item" href="library.html">Library</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target="#searchHistoryColumn">History</a></li>
+                            <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="header">
         <h1>
             <b>My Library</b>
         </h1>
-        <br />
+        <br/>
     </div>
 
-    <div class="tabs">
-        <div class="playlist">Playlists <button> -> </button></div><br>
-        <div class="artist">Artists <button> -> </button></div><br>
-        <div class="album">Albums <button> -> </button></div><br>
-        <div class="songs">Songs <button> -> </button></div>
-    </div><br>
+    <ul class="tabs">
+        <li class="active"><a href="#">Playlists</a></li>
+        <li><a href="#">Artists</a></li>
+        <li><a href="#">Albums</a></li>
+        <li><a href="#">Songs</a></li>
+    </ul>
+    
+    
     <div class="recent">Recently Added
         <div class="added">
             <br /><br /><br /><br />
@@ -30,6 +60,9 @@
             <br /><br />
         </div>
     </div>
+    
+ <!-- Bootstrap JS Bundle -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </body>
 
