@@ -6,6 +6,10 @@ Same Rhythm Radar is a full-stack application designed to provide users with per
 
 ![Context Diagram](https://github.com/BerkleySitterson/ITSC4155_MDSp24_Group2/assets/57911814/04e3974e-4b1c-434f-815f-1e2eb6dfd600)
 
+## Our LLM-Integration Explained
+
+Meta Llama 2 (https://llama.meta.com/) is a free, open-source Large Language Model designed for utilization and research purposes.
+
 ## System Set-Up Steps
 
 (i) To download data for Llama_LLM, navigate to https://huggingface.co/TheBloke/CodeLlama-7B-GGUF/blob/main/codellama-7b.Q4_0.gguf (File is to big to be uploaded to repository at the moment)
