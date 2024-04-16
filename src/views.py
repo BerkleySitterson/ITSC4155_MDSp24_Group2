@@ -9,6 +9,9 @@ from django.shortcuts import render, redirect
 def index(request):
     return render(request, 'index.html')
 
+def library(request):
+    return render(request, 'library.html')
+
 def login(request):
     # Add logic to check username and password in database
     
