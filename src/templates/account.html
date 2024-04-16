@@ -91,7 +91,9 @@
                 <button type="button" class="btn btn-danger me-3" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</button>
             </div>
             <div class="col-auto">
-                <button type="button" class="btn btn-success">Clear Search History</button>
+                <form action="{% url 'clear' %}">
+                    <button type="button" class="btn btn-success">Clear Search History</button>
+                </form>
             </div>
         </div>
 

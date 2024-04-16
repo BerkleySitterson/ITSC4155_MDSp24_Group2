@@ -94,7 +94,9 @@
     <div id="searchHistoryColumn">
         <button class="hide-button" data-bs-toggle="collapse" data-bs-target="#searchHistoryColumn">×</button>
         <h5>Search History</h5>
-        <p>Previous search results go here...<br>1 - {{ query }}</p>
+        <p>{% for i in querySet %}
+            {{i}} <br><br> 
+        {% endfor %}</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
