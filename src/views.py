@@ -21,3 +21,7 @@ def login(request):
 
 def home(request, username):
     return render(request, 'home.html', {'username': username})
+
+def search(request, username):
+    query = request.POST.get('query')
+    return render(request, 'home.html', {'username': username, 'query': query})
