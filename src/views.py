@@ -6,10 +6,16 @@ from django.shortcuts import render, redirect
 
 # Run the following command to start the server: 'python manage.py runserver'
 
+querySet = []
+
 def index(request):
     return render(request, 'index.html')
 
 def library(request):
+    return render(request, 'library.html')
+
+def clear(request):
+    querySet = []
     return render(request, 'library.html')
 
 def login(request):
@@ -27,4 +33,6 @@ def home(request, username):
 
 def search(request, username):
     query = request.POST.get('query')
-    return render(request, 'home.html', {'username': username, 'query': query})
+    if query is not None:
+        querySet.append(query)
+    return render(request, 'home.html', {'username': username, 'querySet': querySet})
