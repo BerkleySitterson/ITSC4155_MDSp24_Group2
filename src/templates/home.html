@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +80,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <!-- Adjust the logo size and center it -->
-                <img src="../SRR_Logo.png" alt="SRR" class="logo">
+                <img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="logo">
                 <form class="d-flex mt-3" action="{% url 'search' username=username %}" method="post"> <!-- Add margin-top for spacing -->
                     {% csrf_token %}
                     <input class="form-control form-control-lg me-2" name='query' type="text" placeholder="Enter Your Query" aria-label="Search" style="flex: 1;">
