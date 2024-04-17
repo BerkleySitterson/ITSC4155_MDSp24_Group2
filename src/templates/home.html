@@ -7,9 +7,25 @@
         <div class="col-12 col-md-8">
             <form class="d-flex mt-3" action="{% url 'search' username=username %}" method="post">
                 {% csrf_token %}
-                <input class="form-control form-control-lg me-2" name='query' type="text" placeholder="Enter Your Query" aria-label="Search" style="flex: 1;">
+                <input class="form-control form-control-lg me-3" name='query' type="text" placeholder="Enter Your Query" aria-label="Search" style="flex: 1;">
                 <button class="btn btn-primary btn-lg" type="submit">Search</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Container for search results -->
+    <div class="card mt-5" style="height: 60vh;"> <!-- Adjust the height as needed -->
+        <div class="card-body" style="overflow-y: auto;">
+            {% if search_results %}
+                <h3>Search Results:</h3>
+                <ul class="list-group">
+                    {% for result in search_results %}
+                        <li class="list-group-item">{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No search results found.</p>
+            {% endif %} 
         </div>
     </div>
 </div>
