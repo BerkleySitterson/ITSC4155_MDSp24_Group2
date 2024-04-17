@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import render, redirect
 from .models import User
+from django.contrib import messages
 
 # This file is used to set up the views/routes for the application. This is where you define functions or classes that handle HTTP requests and return responses.
 
@@ -20,12 +21,17 @@ def clear(request):
     return render(request, 'library.html')
 
 def login(request):
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    if username is not None and password is not None:
-        user = User.objects.filter(username=username, password=password)
-        if user.exists():
-            return redirect('home', username=username)        
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.filter(username=username, password=password).first()
+        if user:
+            # Authentication successful
+            return redirect('home', username=username)
+        else:
+            # Authentication failed, display error message
+            messages.error(request, 'Invalid username or password. Please try again.')
+            return render(request, 'index.html')
     else:
         return render(request, 'index.html')
     
