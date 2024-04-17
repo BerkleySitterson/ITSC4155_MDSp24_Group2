@@ -40,12 +40,19 @@ def register(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        if email is not None and password is not None and username is not None:
-            user = User(username=username, email=email, password=password)
+        
+        # Check if username or email already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already taken.')
+            return render(request, 'register.html')
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered.')
+            return render(request, 'register.html')
+        else:
+            # Create the user
+            user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             return redirect('home', {'username': username})
-        else:
-            return render(request, 'index.html')
     else:
         return render(request, 'register.html')
     
