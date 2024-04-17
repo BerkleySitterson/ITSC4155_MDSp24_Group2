@@ -1,50 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <link rel="icon" href="SRR_Logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>Same Rhythm Radar</title>
-
-    <style>
-        /* Additional styles */
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
-
-        /* Center the logo image in the middle of the page */
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh; /* Make the logo container take the full height of the viewport */
-        }
-
-        .logo {
-            max-width: 10%; /* Control the size of the logo */
-            margin-bottom: 20rem; /* Space between the logo and the description */
-        }
-
-        /* Position the description at the bottom */
-        .description-container {
-            text-align: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 40px;
-            font: 2em sans-serif;
-        }
-    </style>
+    <title>About Page</title>
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary"> <!-- Change bg-dark to bg-primary -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <!-- Text instead of logo -->
             <span class="navbar-text text-white"><strong>Same Rhythm Radar</strong></span>
@@ -73,18 +40,35 @@
         </div>
     </nav>
 
-    <div class="logo-container">
-        <!-- Centered Logo -->
-        {% load static %}<img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="logo">
-        <!-- Description at the bottom of the logo container -->
-        <div class="description-container">
-            <p>Same Rhythm Radar is an advanced music recommendation system that utilizes a large language model dependent on a wide dataset of various songs to produce precise results from user requests.<br><br>
-            The Team:<br>
-            Brian Seeley, Software, Systems, and Networks<br>
-            Berkley Sitterson, Software Engineering<br>
-            Jainesh Lad, Data Science<br>
-            Shoaib Fazal, Software, Systems, and Networks<br>
-            Hamilton Sheppard, A.I., Robotics, and Gaming</p>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 text-center">
+                {% load static %}<img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="img-fluid" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="card">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <p class="card-text fs-4 text-center">
+                                Same Rhythm Radar is an advanced music recommendation system that utilizes a large language model dependent on a wide dataset of various songs to produce precise results from user requests.
+                            </p>
+                            <p class="card-text fs-5 text-center">
+                                <strong>The Team</strong><br>
+                                Brian Seeley, Software, Systems, and Networks<br>
+                                Berkley Sitterson, Software Engineering<br>
+                                Jainesh Lad, Data Science<br>
+                                Shoaib Fazal, Software, Systems, and Networks<br>
+                                Hamilton Sheppard, A.I., Robotics, and Gaming
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
