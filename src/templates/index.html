@@ -22,13 +22,14 @@
             </div>
             <form class="mt-3" action="/login/" method="post">
                 {% csrf_token %}
-                    <input type="email" name="email" id="" class="form-control my-4 py-2" placeholder="Email" required/>
-                    <input type="password" name="password" id="" class="form-control my-4 py-2" placeholder="Password" required/>
+                    <input type="username" name="username" id="username" class="form-control my-4 py-2" placeholder="Username" required/>
+                    <input type="password" name="password" id="password" class="form-control my-4 py-2" placeholder="Password" required/>
                     <div class="text-center mt-3">
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                     <p class="text-center mt-3">{{error_message}}</p>
             </form>
+            <p id="register-link" class="text-center mt-3">Don't have an account? <a href="/register/">Register</a></p>
             </div>
         </div>
     </div>

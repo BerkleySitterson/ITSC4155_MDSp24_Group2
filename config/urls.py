@@ -24,8 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', views.index, name='index'),
     path('login/', views.login, name='login'),
-    path('home/', views.home, name='home'),
-    path('account/', views.account, name='account'),
-    path('library/', views.library, name='library'),
-    path('about/', views.about, name='about')
+    path('register/', views.register, name='register'),
+    path('home/<str:username>/', views.home, name='home'),
+    path('search/<str:username>/', views.search, name='search'),
+    path('library/<str:username>/', views.library, name='library'),
+    path('library/<str:username>/', views.clear, name='clear'),
+    path('account/<str:username>/', views.account, name='account'),
+    path('about/<str:username>/', views.about, name='about'),
 ]
