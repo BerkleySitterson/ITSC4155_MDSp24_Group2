@@ -3,7 +3,8 @@ from django.views import View
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
-
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
 # This file is used to set up the views/routes for the application. This is where you define functions or classes that handle HTTP requests and return responses.
 
 # Run the following command to start the server: 'python manage.py runserver'
@@ -65,8 +66,10 @@ def home(request, username):
 def search(request, username):
     query = request.POST.get('query')
     if query is not None:
-        querySet.append(query)
-    return render(request, 'home.html', {'querySet': querySet, 'username': username})
+        search_history = request.session.get('search_history', [])
+        search_history.append(query)
+        request.session['search_history'] = search_history
+    return render(request, 'home.html', {'username': username})
 
 def about(request, username):
     return render(request, 'about.html', {'username': username})

@@ -28,11 +28,20 @@
             top: 56px; /* Adjust the top position to fit below the navbar */
             left: -300px; /* Set the initial position to hide the column */
             width: 300px;
-            height: calc(100% - 56px); /* Adjust height to fit remaining space */
+            height: calc(100vh - 100px); /* Calculate height based on viewport height */
             background-color: #f8f9fa; /* Adjust background color as needed */
             transition: left 0.3s ease; /* Smooth transition for animation */
             z-index: 999; /* Ensure the column appears above other content */
             padding: 20px;
+        }
+
+        #searchHistoryColumn .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100%; /* Allow the content to fill the entire height of the column */
+            overflow-y: auto; /* Add this rule to enable vertical scrolling */
         }
 
         #searchHistoryColumn.show {
@@ -103,11 +112,17 @@
 
     <!-- Search History Column -->
     <div id="searchHistoryColumn">
-        <button class="hide-button" onclick="toggleHistoryColumn()">×</button>
-        <h5>Search History</h5>
-        <p>{% for i in querySet %}
-            {{i}} <br><br> 
-        {% endfor %}</p>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Search History</h5>
+            <button class="btn btn-outline-secondary" onclick="toggleHistoryColumn()">Close</button>
+        </div>
+        <div class="card-body">
+            <p>
+                {% for query in search_history %}
+                    {{ query }} <br><br>
+                {% endfor %}
+            </p>
+        </div>
     </div>
 
     <!-- Content block -->
@@ -120,13 +135,63 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleHistoryColumn() {
-            var historyColumn = document.getElementById('searchHistoryColumn');
-            if (historyColumn.style.left === '0px') {
-                historyColumn.style.left = '-300px';
-            } else {
-                historyColumn.style.left = '0px';
-            }
+        var historyColumn = document.getElementById('searchHistoryColumn');
+        if (historyColumn.style.left === '0px') {
+            historyColumn.style.left = '-300px';
+            localStorage.setItem('historyColumnState', 'closed');
+        } else {
+            historyColumn.style.left === '-300px';
+            historyColumn.style.left = '0px';
+            localStorage.setItem('historyColumnState', 'open');
+            historyColumn.scrollTop = 0;
+            populateSearchHistory(); // Call populateSearchHistory when opening the column
         }
+    }
+
+    function populateSearchHistory() {
+        var querySet = JSON.parse(localStorage.getItem('search_history')) || [];
+        var historyContainer = document.getElementById('searchHistoryColumn').querySelector('.card-body');
+        historyContainer.innerHTML = ''; // Clear previous content
+        querySet.forEach(function(query) {
+            var p = document.createElement('p');
+            p.textContent = query;
+            historyContainer.appendChild(p);
+        });
+    }
+
+    function resetHistoryColumn() {
+        var historyColumn = document.getElementById('searchHistoryColumn');
+        if (historyColumn.style.left === '0px'){
+        historyColumn.style.left = '-300px';
+        localStorage.setItem('historyColumnState', 'closed'); 
+        }
+    }
+
+    // Apply history column state and search history on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        var historyColumnState = localStorage.getItem('historyColumnState');
+        if (historyColumnState === 'open') {
+            document.getElementById('searchHistoryColumn').style.left = '-300px';
+            localStorage.setItem('historyColumnState', 'closed')
+        } 
+        populateSearchHistory();
+    });
+
+    // Store search history in localStorage when the page is unloaded
+    window.addEventListener('beforeunload', function() {
+        var searchHistory = "{{ search_history_json|escapejs }}";
+        localStorage.setItem('search_history', searchHistory);
+    });
+
+    // Reset the history column position when navigating to a new page
+    var currentUrl = window.location.href;
+    window.addEventListener('popstate', function() {
+        if (window.location.href !== currentUrl) {
+            resetHistoryColumn();
+            currentUrl = window.location.href;
+        }
+    });
+
     </script>
 </body>
 </html>
