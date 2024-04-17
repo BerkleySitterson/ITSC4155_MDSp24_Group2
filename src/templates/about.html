@@ -48,7 +48,7 @@
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Same Rhythm Radar</a>
+            <a class="navbar-brand" href="/home">Same Rhythm Radar</a>
             <!-- Hamburger Menu for smaller devices -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,12 +61,11 @@
                             <strong>Menu</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Home.html">Home</a></li>
-                            <li><a class="dropdown-item" href="library.html">Library</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="toggleHistoryColumn()">History</a></li>
-                            <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                            <li><a class="dropdown-item" href="/home">Home</a></li>
+                            <li><a class="dropdown-item" href="/library">Library</a></li>
+                            <li><a class="dropdown-item" href="/account">Account</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/">Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -76,7 +75,7 @@
 
     <div class="logo-container">
         <!-- Centered Logo -->
-        <img src="SRR_Logo.png" alt="Same Rhythm Radar Logo" class="logo">
+        {% load static %}<img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="logo">
         <!-- Description at the bottom of the logo container -->
         <div class="description-container">
             <p>Same Rhythm Radar is an advanced music recommendation system that utilizes a large language model dependent on a wide dataset of various songs to produce precise results from user requests.<br><br>

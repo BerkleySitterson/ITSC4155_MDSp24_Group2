@@ -61,12 +61,12 @@
                                 <strong>Menu</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="z-index: 1000;">
-                                <li><a class="dropdown-item" href="account.html">Account</a></li>
-                                <li><a class="dropdown-item" href="library.html">Library</a></li>
+                                <li><a class="dropdown-item" href="/account">Account</a></li>
+                                <li><a class="dropdown-item" href="/library">Library</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target="#searchHistoryColumn">History</a></li>
-                                <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                                <li><a class="dropdown-item" href="/about">About Us</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" href="/">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -79,7 +79,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <!-- Adjust the logo size and center it -->
-                <img src="SRR_Logo.png" alt="SRR" class="logo">
+                {% load static %}<img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="logo">
                 <form class="d-flex mt-3"> <!-- Add margin-top for spacing -->
                     <input class="form-control form-control-lg me-2" type="search" placeholder="Enter Your Query" aria-label="Search" style="flex: 1;">
                     <button class="btn btn-primary btn-lg" type="submit">Search</button>

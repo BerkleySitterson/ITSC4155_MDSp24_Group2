@@ -55,12 +55,11 @@
                                 <strong>Menu</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="Home.html">Home</a></li>
-                                <li><a class="dropdown-item" href="library.html">Library</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="toggleHistoryColumn()">History</a></li>
-                                <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                                <li><a class="dropdown-item" href="/home">Home</a></li>
+                                <li><a class="dropdown-item" href="/library">Library</a></li>
+                                <li><a class="dropdown-item" href="/about">About Us</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" href="/">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -71,7 +70,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center">
-                <img src="SRR_Logo.png" alt="SRR" class="logo">
+                {% load static %}<img src="{% static 'SRR_Logo.png' %}" alt="SRR" class="logo">
             </div>
         </div>
     </div>
