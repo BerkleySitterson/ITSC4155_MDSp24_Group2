@@ -150,13 +150,20 @@
         function populateSearchHistory() {
             var querySet = JSON.parse("{{ search_history_json|escapejs }}") || [];
             var historyContainer = document.getElementById('searchHistoryColumn').querySelector('.card-body');
+            var isAtBottom = historyContainer.scrollHeight - historyContainer.clientHeight <= historyContainer.scrollTop + 1;
+
             historyContainer.innerHTML = ''; // Clear previous content
             querySet.forEach(function(query) {
                 var p = document.createElement('p');
                 p.textContent = query;
                 historyContainer.appendChild(p);
             });
+
+            if (isAtBottom) {
+                historyContainer.scrollTop = historyContainer.scrollHeight - historyContainer.clientHeight;
+            }
         }
+
 
         function resetHistoryColumn() {
             var historyColumn = document.getElementById('searchHistoryColumn');

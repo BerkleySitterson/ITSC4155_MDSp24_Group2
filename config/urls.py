@@ -31,4 +31,5 @@ urlpatterns = [
     path('library/<str:username>/', views.clear, name='clear'),
     path('account/<str:username>/', views.account, name='account'),
     path('about/<str:username>/', views.about, name='about'),
+    path('account/<str:username>/clear/', views.clear_search_history, name='clear_search_history'),
 ]

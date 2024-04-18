@@ -17,8 +17,9 @@
             <button type="button" class="btn btn-danger me-3" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</button>
         </div>
         <div class="col-auto">
-            <form action="{% url 'clear' username=username %}">
-                <button type="button" class="btn btn-success">Clear Search History</button>
+            <form id="clearHistoryForm" action="{% url 'clear_search_history' username=username %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Clear Search History</button>
             </form>
         </div>
     </div>

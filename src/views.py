@@ -71,5 +71,14 @@ def search(request, username):
         request.session['search_history'] = search_history
     return render(request, 'home.html', {'username': username})
 
+def clear_search_history(request, username):
+    if request.method == 'POST':
+        # Clear the search history for the given user
+        request.session['search_history'] = []
+        return redirect('account', username=username)
+    else:
+        # Handle invalid request method
+        return HttpResponse(status=405)  # Method Not Allowed
+
 def about(request, username):
     return render(request, 'about.html', {'username': username})
