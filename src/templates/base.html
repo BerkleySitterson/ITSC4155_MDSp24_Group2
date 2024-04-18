@@ -30,7 +30,6 @@
             width: 300px;
             height: calc(100vh - 100px); /* Calculate height based on viewport height */
             background-color: #f8f9fa; /* Adjust background color as needed */
-            transition: left 0.3s ease; /* Smooth transition for animation */
             z-index: 999; /* Ensure the column appears above other content */
             padding: 20px;
         }
@@ -54,6 +53,10 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
+        }
+
+        .transition {
+            transition: left 0.3s ease;
         }
     </style>
 </head>
@@ -136,14 +139,22 @@
     <script>
         function toggleHistoryColumn() {
             var historyColumn = document.getElementById('searchHistoryColumn');
+            historyColumn.classList.add('transition'); // Add the transition class
+
             if (historyColumn.classList.contains('show')) {
                 historyColumn.classList.remove('show');
                 localStorage.setItem('historyColumnState', 'closed');
+                setTimeout(function() {
+                    historyColumn.classList.remove('transition'); // Remove the transition class after the transition is complete
+                }, 300); // Adjust the delay to match the transition duration
             } else {
                 historyColumn.classList.add('show');
                 localStorage.setItem('historyColumnState', 'open');
                 historyColumn.scrollTop = 0;
                 populateSearchHistory();
+                setTimeout(function() {
+                    historyColumn.classList.remove('transition'); // Remove the transition class after the transition is complete
+                }, 300); // Adjust the delay to match the transition duration
             }
         }
 
