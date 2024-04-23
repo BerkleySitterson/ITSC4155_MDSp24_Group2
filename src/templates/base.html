@@ -28,8 +28,8 @@
             top: 56px; /* Adjust the top position to fit below the navbar */
             left: -300px; /* Set the initial position to hide the column */
             width: 300px;
-            height: calc(100vh - 100px); /* Calculate height based on viewport height */
-            background-color: #f8f9fa; /* Adjust background color as needed */
+            height: calc(100vh - 56px); /* Calculate height based on viewport height */
+            background-color: #f6f6f6fb; /* Adjust background color as needed */
             z-index: 999; /* Ensure the column appears above other content */
             padding: 20px;
         }
@@ -39,7 +39,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            height: 100%; /* Allow the content to fill the entire height of the column */
+            height: 97%; /* Allow the content to fill the entire height of the column */
             overflow-y: auto; /* Add this rule to enable vertical scrolling */
         }
 
@@ -58,13 +58,18 @@
         .transition {
             transition: left 0.3s ease;
         }
+        body 
+        {
+            padding-bottom: 20px;
+            padding-top: 50px;
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
     <div class="pos-f-t">
         <!-- Navbar -->
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary"> <!-- Change bg-dark to bg-primary -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary"> <!-- Change bg-dark to bg-primary -->
             <div class="container">
                 <!-- Text instead of logo -->
                 <span class="navbar-text text-white"><strong>Same Rhythm Radar</strong></span>
