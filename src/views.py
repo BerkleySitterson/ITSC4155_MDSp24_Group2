@@ -53,7 +53,7 @@ def register(request):
             # Create the user
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
-            return redirect('home', {'username': username})
+            return redirect('home', username=username)
     else:
         return render(request, 'register.html')
     
@@ -69,7 +69,7 @@ def search(request, username):
         search_history = request.session.get('search_history', [])
         search_history.append(query)
         request.session['search_history'] = search_history
-    return render(request, 'home.html', {'username': username})
+    return redirect('home', username=username)
 
 def clear_search_history(request, username):
     if request.method == 'POST':
