@@ -14,7 +14,7 @@ from django.contrib.sessions.backends.db import SessionStore
 
 querySet = []
 
-openai_api_key = 'sk-proj-25fSipycpi0VQa1f4b7gT3BlbkFJxMiR1jYHwjzCMi7mOQBF'
+openai_api_key = 'OPEN API KEY HERE'
 openai.api_key = openai_api_key
 
 chatbot = OpenAI(api_key=openai_api_key)
