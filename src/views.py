@@ -9,6 +9,7 @@ from django.contrib.auth.hashers import make_password
 from openai import OpenAI
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
+from .models import Playlist, Song, Album
 # This file is used to set up the views/routes for the application. This is where you define functions or classes that handle HTTP requests and return responses.
 
 # Run the following command to start the server: 'python manage.py runserver'
@@ -42,7 +43,53 @@ def index(request):
 
 
 def library(request, username):
-    return render(request, 'library.html', {'username': username})
+    user = request.user
+    playlists = Playlist.objects.filter(user=user)
+    songs = Song.objects.all()
+    albums = Album.objects.all()
+
+    if request.method == 'POST':
+        if 'playlist_name' in request.POST:
+            playlist_name = request.POST.get('playlist_name')
+            playlist = Playlist.objects.create(name=playlist_name, user=user)
+            return redirect('library', username=username)
+
+        elif 'song_title' in request.POST:
+            song_title = request.POST.get('song_title')
+            artist = request.POST.get('artist')
+            album_title = request.POST.get('album_title')
+            playlist_id = request.POST.get('playlist')
+
+            if album_title:
+                album, _ = Album.objects.get_or_create(title=album_title, artist=artist)
+            else:
+                album = None
+
+            song = Song.objects.create(title=song_title, artist=artist, album=album)
+
+            if playlist_id == 'all':
+                song.playlist.set(Playlist.objects.filter(user=user))
+            else:
+                playlist = Playlist.objects.get(id=playlist_id, user=user)
+                song.playlist.add(playlist)
+
+            return redirect('library', username=username)
+
+    selected_playlist = None
+    if 'playlist' in request.GET:
+        playlist_id = request.GET.get('playlist')
+        if playlist_id != 'all':
+            selected_playlist = Playlist.objects.get(id=playlist_id, user=user)
+
+    context = {
+        'username': username,
+        'playlists': playlists,
+        'songs': songs,
+        'albums': albums,
+        'selected_playlist': selected_playlist,
+    }
+
+    return render(request, 'library.html', context)
 
 
 def clear(request):

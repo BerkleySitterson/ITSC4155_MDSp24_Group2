@@ -9,6 +9,40 @@
         </div>
     </div>
 
+    <!-- Create Playlist Form -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <form method="post" action="{% url 'library' username=username %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="playlist_name" placeholder="New Playlist Name" required>
+                    <button type="submit" class="btn btn-primary">Create Playlist</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Song Form -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <form method="post" action="{% url 'library' username=username %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="song_title" placeholder="Song Title" required>
+                    <input type="text" class="form-control" name="artist" placeholder="Artist" required>
+                    <input type="text" class="form-control" name="album_title" placeholder="Album Title (Optional)">
+                    <select class="form-select" name="playlist" required>
+                        <option value="all" selected>All</option>
+                        {% for playlist in playlists %}
+                        <option value="{{ playlist.id }}">{{ playlist.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Add Song</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="row mt-5">
         <div class="col-12 col-md-4">
             <div class="card">
@@ -17,7 +51,18 @@
                 </div>
                 <div class="collapse" id="playlists">
                     <div class="card-body">
-                        <!-- Add playlist content here -->
+                        {% for playlist in playlists %}
+                        <div>
+                            <a href="?playlist={{ playlist.id }}">
+                                <h6>{{ playlist.name }}</h6>
+                            </a>
+                            <ul>
+                                {% for song in playlist.songs.all %}
+                                <li>{{ song.title }} - {{ song.artist }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -29,7 +74,21 @@
                 </div>
                 <div class="collapse" id="songs">
                     <div class="card-body">
-                        <!-- Add song content here -->
+                        {% if selected_playlist %}
+                        <h5>Songs in {{ selected_playlist.name }}</h5>
+                        <ul>
+                            {% for song in selected_playlist.songs.all %}
+                            <li>{{ song.title }} - {{ song.artist }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <h5>All Songs</h5>
+                        <ul>
+                            {% for song in songs %}
+                            <li>{{ song.title }} - {{ song.artist }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -41,7 +100,23 @@
                 </div>
                 <div class="collapse" id="albums">
                     <div class="card-body">
-                        <!-- Add album content here -->
+                        {% if selected_playlist %}
+                        <h5>Albums in {{ selected_playlist.name }}</h5>
+                        <ul>
+                            {% for album in albums %}
+                            {% if album in selected_playlist.albums %}
+                            <li>{{ album.title }} - {{ album.artist }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <h5>All Albums</h5>
+                        <ul>
+                            {% for album in albums %}
+                            <li>{{ album.title }} - {{ album.artist }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
