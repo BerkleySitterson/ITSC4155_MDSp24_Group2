@@ -103,10 +103,8 @@
                         {% if selected_playlist %}
                         <h5>Albums in {{ selected_playlist.name }}</h5>
                         <ul>
-                            {% for album in albums %}
-                            {% if album in selected_playlist.albums %}
+                            {% for album in selected_playlist_albums %}
                             <li>{{ album.title }} - {{ album.artist }}</li>
-                            {% endif %}
                             {% endfor %}
                         </ul>
                         {% else %}

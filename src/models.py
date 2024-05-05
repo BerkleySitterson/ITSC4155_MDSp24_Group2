@@ -24,10 +24,10 @@ class Song(models.Model):
     artist = models.CharField(max_length=200)
     album = models.ForeignKey('Album', on_delete=models.CASCADE, related_name='songs', blank=True, null=True)
     playlist = models.ManyToManyField(Playlist, related_name='songs', blank=True)
+    albums = models.ManyToManyField('Album', related_name='song_albums', blank=True)
 
     def __str__(self):
         return f"{self.title} - {self.artist}"
-
 class Album(models.Model):
     """Model representing an album"""
     title = models.CharField(max_length=200)

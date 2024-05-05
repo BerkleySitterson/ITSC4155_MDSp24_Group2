@@ -76,10 +76,16 @@ def library(request, username):
             return redirect('library', username=username)
 
     selected_playlist = None
+    selected_playlist_albums = []  # Initialize with an empty list
+
     if 'playlist' in request.GET:
         playlist_id = request.GET.get('playlist')
         if playlist_id != 'all':
             selected_playlist = Playlist.objects.get(id=playlist_id, user=user)
+            selected_playlist_songs = selected_playlist.songs.all()
+            selected_playlist_albums = Album.objects.filter(songs__in=selected_playlist_songs).distinct()
+            if not selected_playlist_albums:
+                selected_playlist_albums = []  # Clear the queryset if no albums found
 
     context = {
         'username': username,
@@ -87,6 +93,7 @@ def library(request, username):
         'songs': songs,
         'albums': albums,
         'selected_playlist': selected_playlist,
+        'selected_playlist_albums': selected_playlist_albums,
     }
 
     return render(request, 'library.html', context)
