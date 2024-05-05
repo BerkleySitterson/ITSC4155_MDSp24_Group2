@@ -15,9 +15,10 @@
 
     <!-- Container for search results -->
     <div class="card mt-5" style="height: 60vh;"> <!-- Adjust the height as needed -->
+        <div class="mb-3"></div> <!-- Add whitespace -->
+        <h3 class="text-center mb-4">Search Results</h3>
         <div class="card-body" style="overflow-y: auto;">
             {% if search_results %}
-                <h3>Search Results:</h3>
                 <ul class="list-group">
                     {% for result in search_results %}
                         <li class="list-group-item">{{ result }}</li>

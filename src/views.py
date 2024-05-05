@@ -13,7 +13,7 @@ from django.contrib.sessions.backends.db import SessionStore
 
 querySet = []
 
-openai_api_key = 'sk-proj-T5MdITRYJWdyWWwvSFzkT3BlbkFJxvaLobavoUYGFT8CmC3D'
+openai_api_key = 'API KEY HERE'
 openai.api_key = openai_api_key
 
 chatbot = OpenAI(api_key=openai_api_key)
