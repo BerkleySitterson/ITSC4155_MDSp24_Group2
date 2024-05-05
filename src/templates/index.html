@@ -40,7 +40,7 @@
                 </div>
                 {% endif %}
 
-                <form class="mt-3" action="/login/" method="post">
+                <form class="mt-3" action="/user_login/" method="post">
                     {% csrf_token %}
                     <input type="username" name="username" id="username" class="form-control my-4 py-2" placeholder="Username" required/>
                     <input type="password" name="password" id="password" class="form-control my-4 py-2" placeholder="Password" required/>

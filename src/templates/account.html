@@ -38,13 +38,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="changeUsernameModalLabel">Change Username</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
             </div>
             <div class="modal-body">
-                <input type="text" class="form-control mb-3" placeholder="Enter New Username">
-                <div class="text-center">
-                    <button type="button" class="btn btn-primary">Change</button>
-                </div>
+                <form id="changeUsernameForm" action="{% url 'change_username' username=username %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="form-control mb-3" placeholder="Enter New Username" id="newUsername" name="new_username">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" id="changeUsernameBtn">Change</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -58,10 +61,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="text" class="form-control mb-3" placeholder="Enter New Password">
-                <div class="text-center">
-                    <button type="button" class="btn btn-danger">Change</button>
-                </div>
+                <form id="changePasswordForm" action="{% url 'change_password' username=username %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="form-control mb-3" placeholder="Enter New Password" id="newPassword" name="new_password">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" id="changePasswordBtn">Change</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

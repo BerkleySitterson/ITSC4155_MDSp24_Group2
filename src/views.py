@@ -4,6 +4,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from openai import OpenAI
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
@@ -13,7 +14,7 @@ from django.contrib.sessions.backends.db import SessionStore
 
 querySet = []
 
-openai_api_key = 'API KEY HERE'
+openai_api_key = 'sk-proj-25fSipycpi0VQa1f4b7gT3BlbkFJxMiR1jYHwjzCMi7mOQBF'
 openai.api_key = openai_api_key
 
 chatbot = OpenAI(api_key=openai_api_key)
@@ -48,13 +49,18 @@ def clear(request):
     return render(request, 'library.html')
 
 
-def login(request):
+
+def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = User.objects.filter(username=username, password=password).first()
-        if user:
-            # Authentication successful
+        
+        # Authenticate the user
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            # Login the user
+            login(request, user)
             return redirect('home', username=username)
         else:
             # Authentication failed, display error message
@@ -78,10 +84,12 @@ def register(request):
             messages.error(request, 'Email already registered.')
             return render(request, 'register.html')
         else:
-            # Create the user
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
-            return redirect('home', username=username)
+            
+            if user:
+                # Registration successful
+                return redirect('home', username=username)
     else:
         return render(request, 'register.html')
 
@@ -126,3 +134,35 @@ def clear_search_history(request, username):
 
 def about(request, username):
     return render(request, 'about.html', {'username': username})
+
+def change_username(request, username):
+    if request.method == 'POST':
+        new_username = request.POST.get('new_username')
+        
+        if User.objects.filter(username=new_username).exists():
+            messages.error(request, 'Username already taken.')
+            return render(request, 'account.html', {'username': username})
+        else: 
+            user = User.objects.get(username=username)
+            user.username = new_username
+            user.save()
+            return redirect('account', username=new_username)
+        
+    else:
+        return render(request, 'account.html', {'username': username})
+    
+def change_password(request, username):
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        
+        user = User.objects.get(username=username)
+        user.password = new_password
+        user.save()
+        return redirect('account', username=username)       
+    else:
+        return render(request, 'account.html', {'username': username})
+    
+    
+    
+    
+    
