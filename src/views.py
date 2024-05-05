@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import make_password
 from openai import OpenAI
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
@@ -155,9 +156,11 @@ def change_password(request, username):
     if request.method == 'POST':
         new_password = request.POST.get('new_password')
         
-        user = User.objects.get(username=username)
-        user.password = new_password
+        user = User.objects.get(username=username)  
+        hashed_password = make_password(new_password)
+        user.password = hashed_password
         user.save()
+        
         return redirect('account', username=username)       
     else:
         return render(request, 'account.html', {'username': username})
