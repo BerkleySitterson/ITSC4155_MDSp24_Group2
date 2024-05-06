@@ -10,7 +10,6 @@ from openai import OpenAI
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 from .models import Playlist, Song, Album
-from django.contrib.auth.decorators import login_required
 # This file is used to set up the views/routes for the application. This is where you define functions or classes that handle HTTP requests and return responses.
 
 # Run the following command to start the server: 'python manage.py runserver'
@@ -42,7 +41,6 @@ def ask_openai(message):
 def index(request):
     return render(request, 'index.html')
 
-@login_required
 def library(request, username):
     user = request.user
     playlists = Playlist.objects.filter(user=user)
