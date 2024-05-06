@@ -12,10 +12,19 @@ Utilizes OpenAI's API model, ChatGPT-Turbo-3.5
 
 ## System Set-Up Steps
 
-(i) Input into terminal, pip install -r requirements.txt
+1. Install Python
+2. Navigate to the project root directory ..\ITSC4155_MDSp24_Group2
+3. Open CMD or Terminal in the Project root directory
+4. run the command "pip install -r requirements.txt" (without Quotes)
+5. use some kind of code editor to open ..\ITSC4155_MDSp24_Group2\src\views.py and paste API key from canvas submission, "Final Project - Instructions + Deliverables Submission (Github link, design document, models)"
 
-(ii) Retrieve API Key from Canvas submission "Final Project - Instructions + Deliverables Submission (Github link, design document, models)", https://uncc.instructure.com/courses/211596/assignments/2036546?module_item_id=5616686
+(i) Retrieve API Key from Canvas submission, https://uncc.instructure.com/courses/211596/assignments/2036546?module_item_id=5616686
+(ii) If there are any issues with the API Key, contact our programmer, Hamilton Sheppard at hsheppa1@uncc.edu or sheppardhamilton01@gmail.com to resolve API Key issues.
 
-If there are any issues with the API Key, contact our programmer, Hamilton Sheppard at hsheppa1@uncc.edu or sheppardhamilton01@gmail.com to resolve API Key issues.
-
-(ii) Input into terminal, python manage.py runserver
+6. save views.py and close
+7. Navigate to ..\ITSC4155_MDSp24_Group2 in a terminal
+8. run command "python manage.py runserver"
+9. Copy IP address and port number
+10. Open a browser then paste the IP address and port number and hit enter.
+    
+If steps are followed correctly a login page for SRR will appear.
