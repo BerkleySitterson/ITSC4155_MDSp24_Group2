@@ -98,6 +98,27 @@ def library(request, username):
 
     return render(request, 'library.html', context)
 
+def delete_playlist(request, username, playlist_id):
+    if request.method == 'POST':
+        user = request.user
+        playlist = Playlist.objects.filter(id=playlist_id, user=user)
+        if playlist.exists():
+            playlist.delete()
+    return redirect('library', username=username)
+
+def delete_song(request, username, song_id):
+    if request.method == 'POST':
+        song = Song.objects.filter(id=song_id)
+        if song.exists():
+            song.delete()
+    return redirect('library', username=username)
+
+def delete_album(request, username, album_id):
+    if request.method == 'POST':
+        album = Album.objects.filter(id=album_id)
+        if album.exists():
+            album.delete()
+    return redirect('library', username=username)
 
 def clear(request):
     querySet = []

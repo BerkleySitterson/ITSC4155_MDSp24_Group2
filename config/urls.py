@@ -34,6 +34,8 @@ urlpatterns = [
     path('account/<str:username>/clear/', views.clear_search_history, name='clear_search_history'),
     path('account/<str:username>/change_username/', views.change_username, name='change_username'),
     path('account/<str:username>/change_password/', views.change_password, name='change_password'),
-    #path('create_playlist/<str:username>/', views.create_playlist, name='create_playlist'),
-    #path('add_song/<str:username>/', views.add_song, name='add_song'),
+    path('library/<str:username>/delete_playlist/<int:playlist_id>/', views.delete_playlist, name='delete_playlist'),
+    path('library/<str:username>/delete_song/<int:song_id>/', views.delete_song, name='delete_song'),
+    path('library/<str:username>/delete_album/<int:album_id>/', views.delete_album, name='delete_album'),
 ]
+

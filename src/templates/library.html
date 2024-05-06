@@ -49,21 +49,33 @@
                 <div class="card-header" data-bs-toggle="collapse" data-bs-target="#playlists">
                     <h5 class="card-title">Playlists</h5>
                 </div>
-                <div class="collapse" id="playlists">
-                    <div class="card-body">
-                        {% for playlist in playlists %}
-                        <div>
-                            <a href="?playlist={{ playlist.id }}">
-                                <h6>{{ playlist.name }}</h6>
-                            </a>
-                            <ul>
-                                {% for song in playlist.songs.all %}
-                                <li>{{ song.title }} - {{ song.artist }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% endfor %}
+                <div class="card-body">
+                    <div>
+                        <a href="?playlist=all">
+                            <h6>All</h6>
+                        </a>
+                        <ul>
+                            {% for song in songs %}
+                            <li>{{ song.title }} - {{ song.artist }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
+                    {% for playlist in playlists %}
+                    <div>
+                        <a href="?playlist={{ playlist.id }}">
+                            <h6>{{ playlist.name }}</h6>
+                        </a>
+                        <ul>
+                            {% for song in playlist.songs.all %}
+                            <li>{{ song.title }} - {{ song.artist }}</li>
+                            {% endfor %}
+                        </ul>
+                        <form method="post" action="{% url 'delete_playlist' username=username playlist_id=playlist.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete Playlist</button>
+                        </form>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -79,6 +91,10 @@
                         <ul>
                             {% for song in selected_playlist.songs.all %}
                             <li>{{ song.title }} - {{ song.artist }}</li>
+                            <form method="post" action="{% url 'delete_song' username=username song_id=song.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete Song</button>
+                            </form>
                             {% endfor %}
                         </ul>
                         {% else %}
@@ -86,6 +102,10 @@
                         <ul>
                             {% for song in songs %}
                             <li>{{ song.title }} - {{ song.artist }}</li>
+                            <form method="post" action="{% url 'delete_song' username=username song_id=song.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete Song</button>
+                            </form>
                             {% endfor %}
                         </ul>
                         {% endif %}
@@ -105,6 +125,10 @@
                         <ul>
                             {% for album in selected_playlist_albums %}
                             <li>{{ album.title }} - {{ album.artist }}</li>
+                            <form method="post" action="{% url 'delete_album' username=username album_id=album.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete Album</button>
+                            </form>
                             {% endfor %}
                         </ul>
                         {% else %}
@@ -112,6 +136,10 @@
                         <ul>
                             {% for album in albums %}
                             <li>{{ album.title }} - {{ album.artist }}</li>
+                            <form method="post" action="{% url 'delete_album' username=username album_id=album.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete Album</button>
+                            </form>
                             {% endfor %}
                         </ul>
                         {% endif %}
