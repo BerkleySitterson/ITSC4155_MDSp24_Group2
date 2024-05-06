@@ -8,10 +8,14 @@ SameRhythmRadar is a full-stack application designed to provide users with perso
 
 ## Our LLM-Integration Explained
 
-COMING SOON
+Utilizes OpenAI's API model, ChatGPT-Turbo-3.5
 
 ## System Set-Up Steps
 
-COMING SOON
+(i) Input into terminal, pip install -r requirements.txt
 
-pip install -r requirements.txt
+(ii) Retrieve API Key from Canvas submission "Final Project - Instructions + Deliverables Submission (Github link, design document, models)", https://uncc.instructure.com/courses/211596/assignments/2036546?module_item_id=5616686
+
+If there are any issues with the API Key, contact our programmer, Hamilton Sheppard at hsheppa1@uncc.edu or sheppardhamilton01@gmail.com to resolve API Key issues.
+
+(ii) Input into terminal, python manage.py runserver
