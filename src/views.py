@@ -17,7 +17,7 @@ from django.contrib.auth.decorators import login_required
 
 querySet = []
 
-openai_api_key = 'OPEN API KEY HERE'
+openai_api_key = 'sk-proj-3PfDniqhMUhYY0COndjHT3BlbkFJDHGD2yerOD9P4TDHbP3B'
 openai.api_key = openai_api_key
 
 chatbot = OpenAI(api_key=openai_api_key)
