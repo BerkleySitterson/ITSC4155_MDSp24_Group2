@@ -8,12 +8,8 @@ SameRhythmRadar is a full-stack application designed to provide users with perso
 
 ## Our LLM-Integration Explained
 
-Meta Llama 2 (https://llama.meta.com/) is a free, open-source Large Language Model designed for utilization and research purposes.
+COMING SOON
 
 ## System Set-Up Steps
 
-(i) To download data for Llama_LLM, navigate to https://huggingface.co/TheBloke/CodeLlama-7B-GGUF/blob/main/codellama-7b.Q4_0.gguf (File is to big to be uploaded to repository at the moment)
-
-(ii) After download, place the .gguf file directly into the LLM_Llama folder where llama_model.py is located
-
-(iii) Run llama_model.py script
+COMING SOON
