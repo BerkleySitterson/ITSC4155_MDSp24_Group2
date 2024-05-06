@@ -13,3 +13,5 @@ COMING SOON
 ## System Set-Up Steps
 
 COMING SOON
+
+pip install -r requirements.txt
