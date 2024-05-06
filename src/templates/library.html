@@ -49,7 +49,7 @@
                 <div class="card-header" data-bs-toggle="collapse" data-bs-target="#playlists">
                     <h5 class="card-title">Playlists</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="height: 40vh; overflow-y: auto;">
                     <div>
                         <a href="?playlist=all">
                             <h6>All</h6>
@@ -84,7 +84,7 @@
                 <div class="card-header" data-bs-toggle="collapse" data-bs-target="#songs">
                     <h5 class="card-title">Songs</h5>
                 </div>
-                <div class="collapse" id="songs">
+                <div class="card" id="songs" style="height: 40vh; overflow-y: auto;">
                     <div class="card-body">
                         {% if selected_playlist %}
                         <h5>Songs in {{ selected_playlist.name }}</h5>
@@ -118,7 +118,7 @@
                 <div class="card-header" data-bs-toggle="collapse" data-bs-target="#albums">
                     <h5 class="card-title">Albums</h5>
                 </div>
-                <div class="collapse" id="albums">
+                <div class="card" id="albums" style="height: 40vh; overflow-y: auto;">
                     <div class="card-body">
                         {% if selected_playlist %}
                         <h5>Albums in {{ selected_playlist.name }}</h5>
