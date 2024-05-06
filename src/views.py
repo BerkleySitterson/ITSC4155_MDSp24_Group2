@@ -45,8 +45,8 @@ def index(request):
 def library(request, username):
     user = request.user
     playlists = Playlist.objects.filter(user=user)
-    songs = Song.objects.all()
-    albums = Album.objects.all()
+    songs = Song.objects.filter(playlist__user=user)
+    albums = Album.objects.filter(songs__playlist__user=user)
 
     if request.method == 'POST':
         if 'playlist_name' in request.POST:
